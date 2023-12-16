@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Churn Prediction</title>
+</head>
+<body>
+    <script>
+        document.getElementById("myform").addEventListener("submit", function(event){
+          event.preventDefault()
+        });
+    </script>
+    <form id="myform" action="/predict" method="POST">
+        CustomerID: <input type="text" name = 'CustomerID'> 
+        <br>
+        <br>
+        Name: <input type="text" name = 'Name'> <br>
+        <br>
+        Age: <input type="number" name = 'Age'> <br>
+        <br>
+        Gender: <input type="text" name = 'Gender'> <br>
+        <br>
+        Location: <input type="text" name = 'Location'> <br>
+        <br>
+        Subscription_Length_Months: <input type="number" name = 'Subscription_Length_Months'> <br>
+        <br>
+        Monthly_Bill: <input type="number" name = 'Monthly_Bill'> <br>
+        <br>
+        Total_Usage_GB: <input type="number" name = 'Total_Usage_GB'> <br>
+        <br>
+        <input type="submit" value="Predict">
+
+    </form>
+
+    {% if prediction_text %}
+    <div>
+        <p>Prediction: The customer is {{prediction_text}}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
